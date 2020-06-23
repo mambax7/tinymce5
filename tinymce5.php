@@ -146,7 +146,7 @@ class TinyMCE
      *
      * @return array
      */
-    public function loadCss($css_file = 'style.css')
+    public function loadCss($css_file = 'tinymce.css')
     {
         static $css_url, $css_path;
 
@@ -154,17 +154,17 @@ class TinyMCE
             $css_url  = dirname(xoops_getcss($GLOBALS['xoopsConfig']['theme_set']));
             $css_path = str_replace(XOOPS_THEME_URL, XOOPS_THEME_PATH, $css_url);
         }
-        $css         = array();
-        $css[]       = $css_url . '/' . $css_file;
-        $css[]       = $css_url . '/css/bootstrap.min.css';
-        $css_content = file_get_contents($css_path . '/' . $css_file);
-
-        // get all import css files
-        if (preg_match_all("~\@import url\((.*\.css)\);~sUi", $css_content, $matches, PREG_PATTERN_ORDER)) {
-            foreach ($matches[1] as $key => $css_import) {
-                $css = array_merge($css, $this->loadCss($css_import));
-            }
-        }
+		$css         = array();
+		if (is_file($css_path . '/' . $css_file) == true){
+			$css[]       = $css_url . '/' . $css_file;		
+			$css_content = file_get_contents($css_path . '/' . $css_file);
+			// get all import css files
+			if (preg_match_all("~\@import url\((.*\.css)\);~sUi", $css_content, $matches, PREG_PATTERN_ORDER)) {
+				foreach ($matches[1] as $key => $css_import) {
+					$css = array_merge($css, $this->loadCss($css_import)); 
+				}
+			}
+		}
         return $css;
     }
 
