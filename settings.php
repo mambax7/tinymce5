@@ -21,7 +21,7 @@
 return array(
 	'theme' => 'silver',
 	'mode' => 'exact',
-	'plugins' => 'anchor,code,hr,preview',
+	'plugins' => 'anchor,autolink,charmap,code,codesample,emoticons,hr,image,imagetools,link,media,preview,searchreplace,table',
 	'toolbar' => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
 	// This option prevents tinyeditor from deleting empty tags
 	'valid_elements' => '*[*]',
