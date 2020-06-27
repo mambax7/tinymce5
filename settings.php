@@ -23,6 +23,10 @@ return array(
 	'mode' => 'exact',
 	'plugins' => 'anchor,code,hr,preview',
 	'toolbar' => 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
+	// This option prevents tinyeditor from deleting empty tags
+	'valid_elements' => '*[*]',
+	// Use of relative urls?
+	'relative_urls' => false
 	//'menubar' => 'file edit view'
 
 );
